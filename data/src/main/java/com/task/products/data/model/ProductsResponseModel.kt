@@ -11,9 +11,9 @@ data class ProductsResponseModel(
     val stock: Int,
     val brand: String,
     val category: String,
-    val thumbnail:String,
+    val thumbnail: String,
     val image: List<String>,
-    val active:Boolean
-){
-    fun getFullPrice() =  "{$price} $"
+    val active: Boolean
+) {
+    fun getFullPrice() = "{$price} $"
 }

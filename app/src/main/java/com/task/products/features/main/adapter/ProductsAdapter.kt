@@ -1,4 +1,4 @@
-package com.task.products.ui.main.adapter
+package com.task.products.features.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,7 +27,7 @@ class ProductsAdapter(
     }
 
 
-    override fun onBindViewHolder(holder: ProductsAdapter.ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bind(list[position])
         holder.itemView.setOnClickListener {
             onClickItem(list[position])

@@ -1,5 +1,6 @@
-package com.task.products.ui.main.adapter
+package com.task.products.features.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,5 +24,6 @@ class ViewPagerAdapter(var imageList: List<String>) :
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         val image = imageList[position]
         holder.binding.image = image
+
     }
 }

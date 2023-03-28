@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="details"
+            type="com.task.products.data.model.ProductsResponseModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,12 +21,12 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
         <!--        app:imageUrl="@{product.thumbnail}"-->
         <!--        android:layout_gravity="center"-->
         <!--        tools:src="@tools:sample/avatars"/>-->
@@ -39,8 +42,8 @@
             android:paddingHorizontal="10dp"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewpager"
             tools:text="iPhone 9" />
 
@@ -53,12 +56,12 @@
             android:layout_gravity="center"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
-            android:text="@{product.fullPrice}"
+            android:text="@{details.fullPrice}"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/text_view_name_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_view_discountPercentage"
+            app:layout_constraintTop_toBottomOf="@id/text_view_name_product"
             tools:text="$549 JD" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -67,18 +70,18 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_paddingSmall"
+            android:background="@color/oxford_blue"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
-            android:text="@{product.discountPercentage}"
-            android:textColor="@color/white"
-            android:background="@color/oxford_blue"
-            android:textSize="12sp"
-            tools:text="-12.96%"
             android:paddingStart="20dp"
-            android:layout_marginTop="@dimen/_paddingSmall"
-            app:layout_constraintTop_toTopOf="@id/text_view_price_product"
+            android:text='@{String.format("%.2f%%", details.discountPercentage)}'
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@id/text_view_price_product"
-            app:layout_constraintStart_toEndOf="@id/ratingbar" />
+            app:layout_constraintStart_toEndOf="@id/ratingbar"
+            app:layout_constraintTop_toTopOf="@id/text_view_price_product"
+            tools:text="-12.96%" />
 
         <RatingBar
             android:id="@+id/ratingbar"
@@ -88,8 +91,8 @@
             android:numStars="5"
             android:scrollbarSize="@dimen/_paddingSmall"
             android:stepSize="1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/text_view_discountPercentage"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/text_view_price_product" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -98,16 +101,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_paddingLarge"
             android:paddingHorizontal="10dp"
-            android:text="@{product.description}"
+            android:text="@{details.description}"
             android:textColor="@color/black"
             android:textSize="14sp"
-            tools:text="An apple mobile which is nothing like apple"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_discountPercentage"
-            android:layout_marginTop="@dimen/_paddingLarge" />
+            tools:text="An apple mobile which is nothing like apple" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
