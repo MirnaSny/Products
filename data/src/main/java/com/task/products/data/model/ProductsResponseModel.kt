@@ -13,7 +13,10 @@ data class ProductsResponseModel(
     val category: String,
     val thumbnail: String,
     val image: List<String>,
-    val active: Boolean
+    val active: Boolean,
+
+    //local var
+    var selected:Boolean=false
 ) {
     fun getFullPrice() = "{$price} $"
 }

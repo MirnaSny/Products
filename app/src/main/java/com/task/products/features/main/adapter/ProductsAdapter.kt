@@ -18,7 +18,17 @@ class ProductsAdapter(
         fun bind(product: ProductsResponseModel, position: Int) {
             binding.product = product
 
-            binding.
+            binding.linearLayout.setOnClickListener{
+                if (position != indexLastSelected){
+
+                    //if not default
+                    //notify last item
+                    if (indexLastSelected != -1){
+
+                    }
+
+                }
+            }
 
         }
 
