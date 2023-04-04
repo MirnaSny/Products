@@ -1,19 +1,21 @@
 package com.task.products.features.main.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.task.products.data.model.ProductsResponseModel
 import com.task.products.databinding.RowProductsBinding
+import com.task.products.features.product.details.ProductDetailsFragment
 
 class ProductsAdapter(
     private val list: List<ProductsResponseModel>,
-    private val onClickItem: (model :ProductsResponseModel) -> Unit
+    private val onClickItem: (model: ProductsResponseModel) -> Unit
 ) :
     RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
 
-    inner class ProductViewHolder( val binding: RowProductsBinding) :
+    inner class ProductViewHolder(val binding: RowProductsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: ProductsResponseModel) {
             binding.product = product
@@ -37,6 +39,7 @@ class ProductsAdapter(
     override fun getItemCount(): Int {
         return list.size
     }
+
 }
 
 

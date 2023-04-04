@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".features.main.MainActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/navigation_app"
+        app:defaultNavHost="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_product"
@@ -14,6 +20,6 @@
         android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        tools:listitem="@layout/row_products"/>
+        tools:listitem="@layout/row_products" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
