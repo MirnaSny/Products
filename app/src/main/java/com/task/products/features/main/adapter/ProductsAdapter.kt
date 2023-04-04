@@ -1,24 +1,25 @@
 package com.task.products.features.main.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.task.products.data.model.ProductsResponseModel
 import com.task.products.databinding.RowProductsBinding
-import com.task.products.features.product.details.ProductDetailsFragment
 
 class ProductsAdapter(
-    private val list: List<ProductsResponseModel>,
-    private val onClickItem: (model: ProductsResponseModel) -> Unit
+    private val list: List<ProductsResponseModel>
 ) :
     RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
+    var indexLastSelected = -1
 
-    inner class ProductViewHolder(val binding: RowProductsBinding) :
+    inner class ProductViewHolder(private val binding: RowProductsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ProductsResponseModel) {
+        fun bind(product: ProductsResponseModel, position: Int) {
             binding.product = product
+
+            binding.
+
         }
 
     }
@@ -30,11 +31,10 @@ class ProductsAdapter(
 
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(list[position])
-        holder.itemView.setOnClickListener {
-            onClickItem(list[position])
-        }
+        val model = list[position]
+        holder.bind(model, position)
     }
+
 
     override fun getItemCount(): Int {
         return list.size
