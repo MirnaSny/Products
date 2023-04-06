@@ -1,4 +1,4 @@
-package com.task.products.data.model
+package com.task.products.domain.model
 
 
 data class ProductsResponseModel(

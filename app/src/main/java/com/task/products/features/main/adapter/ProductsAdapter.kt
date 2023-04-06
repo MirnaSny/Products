@@ -3,36 +3,14 @@ package com.task.products.features.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.task.products.data.model.ProductsResponseModel
+import com.task.products.domain.model.ProductsResponseModel
 import com.task.products.databinding.RowProductsBinding
 
-class ProductsAdapter(
-    private val list: List<ProductsResponseModel>
-) :
+class ProductsAdapter(private val list: List<ProductsResponseModel>) :
     RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
     var indexLastSelected = -1
 
-    inner class ProductViewHolder(private val binding: RowProductsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ProductsResponseModel, position: Int) {
-            binding.product = product
-
-            binding.linearLayout.setOnClickListener{
-                if (position != indexLastSelected){
-
-                    //if not default
-                    //notify last item
-                    if (indexLastSelected != -1){
-
-                    }
-
-                }
-            }
-
-        }
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding = RowProductsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -50,6 +28,31 @@ class ProductsAdapter(
         return list.size
     }
 
+    inner class ProductViewHolder(private val binding: RowProductsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(model: ProductsResponseModel, position: Int) {
+            binding.product = model
+
+            binding.linearLayout.setOnClickListener {
+                if (position != indexLastSelected) {
+
+                    //if not default
+                    //notify last item
+                    if (indexLastSelected != -1) {
+                        list[indexLastSelected].selected = false
+                        notifyItemChanged(indexLastSelected)
+                    }
+                    //notify new item
+                    indexLastSelected = position
+                    list[position].selected=true
+                    notifyItemChanged(position)
+
+                }
+            }
+
+        }
+
+    }
 }
 
 

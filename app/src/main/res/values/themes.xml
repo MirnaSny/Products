@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ShapeAppearanceOverlay.MyApp.MaterialView" parent="">
+    <style name="ShapeAppearanceOverlay.MyApp.MaterialCardView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>

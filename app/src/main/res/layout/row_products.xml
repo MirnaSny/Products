@@ -7,7 +7,7 @@
 
         <variable
             name="product"
-            type="com.task.products.data.model.ProductsResponseModel" />
+            type="com.task.products.domain.model.ProductsResponseModel" />
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_height="110dp"
             android:layout_gravity="center"
             app:imageUrl="@{product.thumbnail}"
-            app:shapeAppearanceOverlay="ShapeAppearanceOverlay.MyApp.MaterialView"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.MaterialCardView"
             tools:src="@tools:sample/avatars" />
 
         <androidx.appcompat.widget.AppCompatTextView

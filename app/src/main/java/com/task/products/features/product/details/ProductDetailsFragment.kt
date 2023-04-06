@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.task.products.data.model.ProductsResponseModel
+import com.task.products.domain.model.ProductsResponseModel
 import com.task.products.databinding.ActivityMainBinding
 import com.task.products.databinding.ActivityProductDetailsBinding
 import com.task.products.features.main.MainViewModel
