@@ -1,6 +1,6 @@
 package com.task.products.data.di
 
-import com.task.products.data.api.ProductsApi
+import com.task.products.data.datasource.ProductsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +29,4 @@ object NetworkModule {
     fun provideApi(retrofit: Retrofit):ProductsApi{
         return retrofit.create(ProductsApi::class.java)
     }
-
-
-
 }

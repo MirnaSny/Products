@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.task.products.core'
+    namespace 'com.task.products.presentation'
     compileSdk 33
 
     defaultConfig {
@@ -29,15 +30,28 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding true
         viewBinding true
     }
 }
 
 dependencies {
+    implementation project (":data")
+    implementation project (":core")
 
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
 
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
+
+    //dagger hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
 
 }
