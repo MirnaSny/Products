@@ -7,9 +7,7 @@ import com.task.products.presentation.databinding.ImagesBinding
 
 class ViewPagerAdapter(var imageList: List<String>) :
     RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
-    class PagerViewHolder(val binding: ImagesBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class PagerViewHolder(val binding: ImagesBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         val binding = ImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)

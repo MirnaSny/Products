@@ -33,7 +33,7 @@ class ProductsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentProductsBinding.inflate(layoutInflater)
         return binding.root
@@ -53,18 +53,18 @@ class ProductsFragment : Fragment() {
 
 
         private fun initObserver() {
-            lifecycleScope.launch() {
+            lifecycleScope.launch {
                 viewModel.productStateFlow.collect(::onSuccessProducts)
             }
 
 
-            lifecycleScope.launch() {
+            lifecycleScope.launch {
                 viewModel.productsLoadingStateFlow.collect { show ->
                     binding.progressCircular.isVisible = show
                 }
             }
 
-            lifecycleScope.launch() {
+            lifecycleScope.launch {
                 viewModel.productsErrorStateFlow.collect { response ->
                     if (response != null) {
                         Log.d("TAG", response.toString())
