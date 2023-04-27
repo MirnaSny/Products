@@ -27,8 +27,6 @@ class ProductsFragment : Fragment() {
 
     private lateinit var adapter: ProductsAdapter
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,39 +44,40 @@ class ProductsFragment : Fragment() {
         initAdapter()
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         adapter = ProductsAdapter(::onClickItem)
-        binding.recyclerViewProduct.adapter=adapter
+        binding.recyclerViewProduct.adapter = adapter
     }
 
 
-        private fun initObserver() {
-            lifecycleScope.launch {
-                viewModel.productStateFlow.collect(::onSuccessProducts)
+    private fun initObserver() {
+        lifecycleScope.launch {
+            viewModel.productStateFlow.collect(::onSuccessProducts)
+        }
+
+
+        lifecycleScope.launch {
+            viewModel.productsLoadingStateFlow.collect { show ->
+                binding.progressCircular.isVisible = show
             }
+        }
 
-
-            lifecycleScope.launch {
-                viewModel.productsLoadingStateFlow.collect { show ->
-                    binding.progressCircular.isVisible = show
+        lifecycleScope.launch {
+            viewModel.productsErrorStateFlow.collect { response ->
+                if (response != null) {
+                    Log.d("TAG00", response.toString())
                 }
             }
-
-            lifecycleScope.launch {
-                viewModel.productsErrorStateFlow.collect { response ->
-                    if (response != null) {
-                        Log.d("TAG", response.toString())
-                    }
-                }
-            }
         }
-            private fun onSuccessProducts(response:List<ProductsResponseModel>? ){
-                if (response?.isNotEmpty() ==true) adapter.submitList(response)
-            }
+    }
+
+    private fun onSuccessProducts(response: List<ProductsResponseModel>?) {
+        if (response?.isNotEmpty() == true) adapter.submitList(response)
+    }
 
 
-            private fun onClickItem(id: String){
-                findNavController().navigate(R.id.detailsProductFragment, bundleOf("id" to id))
+    private fun onClickItem(id: String) {
+        findNavController().navigate(R.id.detailsProductFragment, bundleOf("id" to id))
 
-        }
-        }
+    }
+}

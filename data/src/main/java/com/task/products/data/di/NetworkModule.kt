@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private val baseUrl="https://dummyjson.com/"
+    const val baseUrl="https://dummyjson.com/"
 
     @Provides
     @Singleton
@@ -28,6 +28,5 @@ object NetworkModule {
     @Singleton
     fun provideApi(retrofit: Retrofit):ProductsApi{
         return retrofit.create(ProductsApi::class.java)
-
     }
 }
