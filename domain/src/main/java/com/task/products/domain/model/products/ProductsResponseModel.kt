@@ -6,7 +6,7 @@ data class ProductsResponseModel(
     val title: String,
     val description: String,
     val price: Int,
-    val discountPercentage: Float,
+    val discountPercentage: Double,
     val rating: Float,
     val stock: Int,
     val brand: String,

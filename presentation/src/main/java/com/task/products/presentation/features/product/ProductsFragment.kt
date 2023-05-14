@@ -43,6 +43,7 @@ class ProductsFragment : androidx.fragment.app.Fragment() {
 
         initObserver()
         initAdapter()
+        initListener()
     }
 
     private fun initAdapter() {
@@ -50,10 +51,10 @@ class ProductsFragment : androidx.fragment.app.Fragment() {
         binding.recyclerViewProduct.adapter = adapter
     }
 
-    private fun initListener(){
+    private fun initListener() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getProducts()
-            lifecycleScope.launch{
+            lifecycleScope.launch {
                 delay(3000)
                 binding.swipeRefresh.isRefreshing = false
             }
@@ -61,12 +62,10 @@ class ProductsFragment : androidx.fragment.app.Fragment() {
     }
 
 
-
     private fun initObserver() {
         lifecycleScope.launch {
             viewModel.productStateFlow.collect(::onSuccessProducts)
         }
-
 
         lifecycleScope.launch {
             viewModel.productsLoadingStateFlow.collect { show ->
