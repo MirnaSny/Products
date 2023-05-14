@@ -1,5 +1,6 @@
 package com.task.products.presentation.features.product
 
+import android.app.Fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ProductsFragment : Fragment() {
+class ProductsFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var binding: FragmentProductsBinding
 
@@ -50,17 +50,20 @@ class ProductsFragment : Fragment() {
     }
 
 
+
+
+
     private fun initObserver() {
         lifecycleScope.launch {
             viewModel.productStateFlow.collect(::onSuccessProducts)
         }
 
 
-        lifecycleScope.launch {
-            viewModel.productsLoadingStateFlow.collect { show ->
-                binding.progressCircular.isVisible = show
-            }
-        }
+//        lifecycleScope.launch {
+//            viewModel.productsLoadingStateFlow.collect { show ->
+//                binding.progressCircular.isVisible = show
+//            }
+//        }
 
         lifecycleScope.launch {
             viewModel.productsErrorStateFlow.collect { response ->
