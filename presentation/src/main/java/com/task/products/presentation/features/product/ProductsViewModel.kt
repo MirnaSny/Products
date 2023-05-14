@@ -33,13 +33,11 @@ class ProductsViewModel @Inject constructor(
         getProducts()
     }
 
-    private fun getProducts() {
+    fun getProducts() {
         viewModelScope.launch {
             _productsLoadingStateFlow.emit(true)
             try {
-
                 _productsStateFlow.emit(getProductsSortedByNameUseCase())
-
             } catch (e: Exception) {
                 _productsErrorStateFlow.emit(e)
             }

@@ -16,6 +16,7 @@ import com.task.products.presentation.R
 import com.task.products.presentation.databinding.FragmentProductsBinding
 import com.task.products.presentation.features.product.adapter.ProductsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -49,7 +50,15 @@ class ProductsFragment : androidx.fragment.app.Fragment() {
         binding.recyclerViewProduct.adapter = adapter
     }
 
-
+    private fun initListener(){
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getProducts()
+            lifecycleScope.launch{
+                delay(3000)
+                binding.swipeRefresh.isRefreshing = false
+            }
+        }
+    }
 
 
 
@@ -59,11 +68,11 @@ class ProductsFragment : androidx.fragment.app.Fragment() {
         }
 
 
-//        lifecycleScope.launch {
-//            viewModel.productsLoadingStateFlow.collect { show ->
-//                binding.progressCircular.isVisible = show
-//            }
-//        }
+        lifecycleScope.launch {
+            viewModel.productsLoadingStateFlow.collect { show ->
+                binding.progressCircular.isVisible = show
+            }
+        }
 
         lifecycleScope.launch {
             viewModel.productsErrorStateFlow.collect { response ->
