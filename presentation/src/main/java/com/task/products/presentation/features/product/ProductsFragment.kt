@@ -1,6 +1,5 @@
 package com.task.products.presentation.features.product
 
-import android.app.Fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

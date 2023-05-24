@@ -13,13 +13,5 @@
         app:navGraph="@navigation/navigation_app"
         app:defaultNavHost="true"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_product"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/row_products" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 package com.task.products.core
 
-class BaseFragment {
-
+class BaseFragment{
+    
 }

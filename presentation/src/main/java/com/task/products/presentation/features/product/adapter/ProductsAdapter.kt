@@ -32,7 +32,10 @@ class ProductsAdapter(
         fun bind(model: ProductsResponseModel, position: Int) {
             binding.product = model
 
-            binding.cardView.setOnClickListener {
+
+            itemView.setOnClickListener {
+                onClickItem(model.id)
+
                 if (position != indexLastSelected) {
 
                     //if not default
@@ -46,7 +49,6 @@ class ProductsAdapter(
                     getItem(position).selected = true
                     notifyItemChanged(position)
                 }
-                onClickItem(model.id)
 
             }
 
